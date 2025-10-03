@@ -1,0 +1,69 @@
+#include <pybind11/pybind11.h>
+#include <pybind11/numpy.h>
+
+namespace py = pybind11;
+
+py::array_t<uint32_t> randomWalks(
+    py::array_t<uint32_t> _indptr,
+    py::array_t<uint32_t> _indices,
+    py::array_t<float> _data,
+    py::array_t<uint32_t> _prefix,
+    size_t seed,
+    size_t nWalks,
+    size_t walkLen);
+py::array_t<uint32_t> randomWalksNoBacktrack(
+    py::array_t<uint32_t> _indptr,
+    py::array_t<uint32_t> _indices,
+    py::array_t<float> _data,
+    py::array_t<uint32_t> _prefix,
+    size_t seed,
+    size_t nWalks,
+    size_t walkLen);
+std::tuple<py::array_t<uint32_t>, py::array_t<bool>> randomWalksRestart(
+    py::array_t<uint32_t> _indptr,
+    py::array_t<uint32_t> _indices,
+    py::array_t<float> _data,
+    py::array_t<uint32_t> _prefix,
+    py::array_t<bool> _prefixRestart,
+    size_t seed,
+    size_t nWalks,
+    size_t walkLen,
+    float alpha);
+std::tuple<py::array_t<uint32_t>, py::array_t<bool>> randomWalksRestartNoBacktrack(
+    py::array_t<uint32_t> _indptr,
+    py::array_t<uint32_t> _indices,
+    py::array_t<float> _data,
+    py::array_t<uint32_t> _prefix,
+    py::array_t<bool> _prefixRestart,
+    size_t seed,
+    size_t nWalks,
+    size_t walkLen,
+    float alpha);
+py::array_t<uint32_t> randomWalksPeriodicRestart(
+    py::array_t<uint32_t> _indptr,
+    py::array_t<uint32_t> _indices,
+    py::array_t<float> _data,
+    py::array_t<uint32_t> _prefix,
+    size_t seed,
+    size_t nWalks,
+    size_t walkLen,
+    size_t period);
+py::array_t<uint32_t> randomWalksPeriodicRestartNoBacktrack(
+    py::array_t<uint32_t> _indptr,
+    py::array_t<uint32_t> _indices,
+    py::array_t<float> _data,
+    py::array_t<uint32_t> _prefix,
+    size_t seed,
+    size_t nWalks,
+    size_t walkLen,
+    size_t period);
+py::array_t<uint32_t> n2vRandomWalks(
+    py::array_t<uint32_t> _indptr,
+    py::array_t<uint32_t> _indices,
+    py::array_t<float> _data,
+    py::array_t<uint32_t> _prefix,
+    size_t seed,
+    size_t nWalks,
+    size_t walkLen,
+    float p,
+    float q);

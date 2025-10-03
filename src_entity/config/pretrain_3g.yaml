@@ -1,0 +1,47 @@
+output_dir: ~/flock/output-entity
+
+dataset:
+  class: JointDataset
+  graphs: [FB15k237, WN18RR, CoDExMedium]
+  root: ~/flock/kg-datasets-entity/
+
+model:
+  class: Flock
+  verbose: False
+  # random walk
+  walk_num: 128
+  walk_len: 128
+  record_neighbors: False
+  # refinements
+  refinements: 6
+  attention_scatter: True
+  attention_scatter_n_heads: 4
+  additive_refinement: True
+  embed_only_first_refinement: False
+  embedding_tying_across_refinements: False
+  parameter_tying_across_refinements: False
+  # sequence network
+  net: gru
+  hidden_dim: 64
+  n_layers: 1
+  dtype: float32
+
+task:
+  name: MultiGraphPretraining
+  num_negative: 512
+  strict_negative: yes
+  adversarial_temperature: 1
+  metric: [mr, mrr, hits@1, hits@3, hits@10]
+
+optimizer:
+  class: AdamW
+  lr: 5.0e-4
+  weight_decay: 0.01
+
+train:
+  gpus: {{ gpus }}
+  batch_size: 8
+  num_epoch: 5
+  log_interval: 100
+  batch_per_epoch: 80000
+  fast_test: 500
