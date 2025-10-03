@@ -42,8 +42,10 @@ Entity prediction evaluation (using the checkpoint at `checkpoints/flock_entity.
 ```bash
 cd ~/flock
 mkdir -p ~/flock/output-entity
+
 # zero-shot
 CKPT=~/flock/checkpoints/flock_entity.pth bash scripts/entity_zeroshot.sh
+
 # finetuning
 CKPT=~/flock/checkpoints/flock_entity.pth bash scripts/entity_finetune.sh
 ```
@@ -60,8 +62,10 @@ Relation prediction evaluation (using the checkpoint at `checkpoints/flock_relat
 ```bash
 cd ~/flock
 mkdir -p ~/flock/output-relation
+
 # zero-shot
 CKPT=~/flock/checkpoints/flock_relation.pth bash scripts/relation_zeroshot.sh
+
 # finetuning
 CKPT=~/flock/checkpoints/flock_relation.pth bash scripts/relation_finetune.sh
 ```
@@ -78,7 +82,7 @@ python3 generate_petals.py
 
 Our implementation is based on the code from the following repositories:
 
-- [graph-walker](https://github.com/kerighan/graph-walker) and [RWNN](https://github.com/jw9730/random-walk) for random walks and recordings
+- [RWNN](https://github.com/jw9730/random-walk) and [graph-walker](https://github.com/kerighan/graph-walker) for random walks and their anonymizations
 - [MOTIF](https://github.com/HxyScotthuang/MOTIF) and [ULTRA](https://github.com/DeepGraphLearning/ULTRA) for entity prediction experiments
 - [TRIX](https://github.com/yuchengz99/TRIX) for relation prediction experiments
 
